@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dimitarvashkov.tsarevets">
+
     <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -19,10 +21,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".English" android:label="Tsarevets"/>
-        <activity android:name=".Bulgarian" android:label="Царевец"></activity>
+        <activity
+            android:name=".English"
+            android:label="Tsarevets" />
+        <activity
+            android:name=".Bulgarian"
+            android:label="Царевец" />
         <activity android:name=".BarcodeCaptureActivity" />
+        <activity
+            android:name=".ScreenSliderPagerActivity"
+            android:label="@string/title_activity_screen_slider_pager"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-
 
 </manifest>
