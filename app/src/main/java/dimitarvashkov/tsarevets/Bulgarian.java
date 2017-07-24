@@ -2,6 +2,7 @@ package dimitarvashkov.tsarevets;
 
 import android.content.Intent;
 import android.graphics.Point;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +17,9 @@ public class Bulgarian extends AppCompatActivity {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private static final int BARCODE_READER_REQUEST_CODE = 1;
-    private String bgLabel = "BG.mp3";
+    //CHANGE TO BG
+    //TODO Change to BG once you have the music
+    private String bgLabel = "DE.mp3";
 
     private TextView mResultTextView;
 
@@ -56,9 +59,14 @@ public class Bulgarian extends AppCompatActivity {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
                     Point[] p = barcode.cornerPoints;
-                    mResultTextView.setText(barcode.displayValue);
 
-                } else mResultTextView.setText(R.string.no_barcode_captured);
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.setDataAndType(Uri.parse(barcode.displayValue + bgLabel), "audio/mp3");
+                    startActivity(intent);
+
+
+                } else mResultTextView.setText("Capture code");
             } else Log.e(LOG_TAG, String.format(getString(R.string.barcode_error_format),
                     CommonStatusCodes.getStatusCodeString(resultCode)));
         } else super.onActivityResult(requestCode, resultCode, data);

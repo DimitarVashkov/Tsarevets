@@ -2,6 +2,9 @@ package dimitarvashkov.tsarevets;
 
 import android.content.Intent;
 import android.graphics.Point;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -59,8 +62,14 @@ public class English extends AppCompatActivity {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
                     Point[] p = barcode.cornerPoints;
-                    mResultTextView.setText(barcode.displayValue);
-                } else mResultTextView.setText(R.string.no_barcode_captured);
+
+                    //Start media player
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.setDataAndType(Uri.parse(barcode.displayValue + enLabel), "audio/mp3");
+                    startActivity(intent);
+
+                } else mResultTextView.setText("Capture code");
             } else Log.e(LOG_TAG, String.format(getString(R.string.barcode_error_format),
                     CommonStatusCodes.getStatusCodeString(resultCode)));
         } else super.onActivityResult(requestCode, resultCode, data);
