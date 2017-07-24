@@ -25,7 +25,7 @@ public class Bulgarian extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bulgarian);
 
-        TextView mResultTextView = (TextView) findViewById(R.id.result_textview);
+         mResultTextView = (TextView) findViewById(R.id.result_textview);
 
 
         Button scanBarcodeButton = (Button) findViewById(R.id.scan_barcode_button);

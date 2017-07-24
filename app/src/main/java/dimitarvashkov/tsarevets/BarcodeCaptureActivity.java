@@ -54,6 +54,9 @@ import dimitarvashkov.tsarevets.CameraSource;
 import dimitarvashkov.tsarevets.CameraSourcePreview;
 import java.io.IOException;
 
+import static android.hardware.Camera.Parameters.FOCUS_MODE_AUTO;
+import static android.hardware.Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE;
+
 public final class BarcodeCaptureActivity extends AppCompatActivity
         implements BarcodeTracker.BarcodeGraphicTrackerCallback {
 
@@ -197,8 +200,7 @@ public final class BarcodeCaptureActivity extends AppCompatActivity
 
         // make sure that auto focus is an available option
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            builder = builder.setFocusMode(
-                    autoFocus ? Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE : null);
+            builder = builder.setFocusMode(FOCUS_MODE_CONTINUOUS_PICTURE);
         }
 
         mCameraSource = builder
