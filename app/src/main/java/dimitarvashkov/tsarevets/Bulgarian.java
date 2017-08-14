@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
@@ -22,13 +24,16 @@ public class Bulgarian extends AppCompatActivity {
     private String bgLabel = "DE.mp3";
 
     private TextView mResultTextView;
+    private VideoView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bulgarian);
 
-         mResultTextView = (TextView) findViewById(R.id.result_textview);
+        videoView = (VideoView)findViewById(R.id.myvideoview);
+
+         //mResultTextView = (TextView) findViewById(R.id.result_textview);
 
 
         Button scanBarcodeButton = (Button) findViewById(R.id.scan_barcode_button);
@@ -60,10 +65,48 @@ public class Bulgarian extends AppCompatActivity {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
                     Point[] p = barcode.cornerPoints;
 
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_VIEW);
-                    intent.setDataAndType(Uri.parse(barcode.displayValue + bgLabel), "audio/mp3");
-                    startActivity(intent);
+//                    //mResultTextView.append("android.resource://"+getPackageName()+"/raw/" + barcode.displayValue);
+//                    Intent intent = new Intent();
+//                    intent.setAction(Intent.ACTION_VIEW);
+//                    //Uri.parse("android.resource://com.my.package/drawable/icon");
+//                    //Uri.parse(barcode.displayValue + bgLabel)
+//                    String location = "android.resource://"+getPackageName()+"/raw/";
+//                    intent.setDataAndType(Uri.parse(location + barcode.displayValue), "audio/mp3");
+//                    startActivity(intent);
+
+
+                    //Start audio and switch background photos of VideoView
+
+                    MediaController mediaController = new MediaController(this);
+                    mediaController.setAnchorView(videoView);
+                    videoView.setMediaController(mediaController);
+                    String path = "android.resource://" + getPackageName() + "/raw/" + barcode.displayValue;
+
+                    switch(barcode.displayValue){
+                        case "first_song":
+                            videoView.setBackgroundResource(R.drawable.first_photo);
+                            break;
+                        case "second_song":
+                            videoView.setBackgroundResource(R.drawable.second_photo);
+                            break;
+                        case "third_song":
+                            videoView.setBackgroundResource(R.drawable.third_photo);
+                            break;
+                        case "fourth_song":
+                            videoView.setBackgroundResource(R.drawable.fourth_photo);
+                            break;
+                        case "fifth_song":
+                            videoView.setBackgroundResource(R.drawable.fifth_photo);
+                            break;
+                        case "sixth_song":
+                            videoView.setBackgroundResource(R.drawable.sixth_photo);
+                            break;
+                    }
+
+                    videoView.setVideoPath(path);
+                    videoView.start();
+
+
 
 
                 } else mResultTextView.setText("Capture code");

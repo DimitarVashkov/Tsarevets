@@ -164,9 +164,9 @@ public final class BarcodeCaptureActivity extends AppCompatActivity
         barcodeDetector.setProcessor(new MultiProcessor.Builder<>(barcodeFactory).build());
 
         if (!barcodeDetector.isOperational()) {
-            // Note: The first time that an app using the dimitarvashkov.tsarevets.barcode or face API is installed on a
+            // Note: The first_song time that an app using the dimitarvashkov.tsarevets.barcode or face API is installed on a
             // device, GMS will download a native libraries to the device in order to do detection.
-            // Usually this completes before the app is run for the first time.  But if that
+            // Usually this completes before the app is run for the first_song time.  But if that
             // download has not yet completed, then the above call will not detect any barcodes
             // and/or faces.
             //
