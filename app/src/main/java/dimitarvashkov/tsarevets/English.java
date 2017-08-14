@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
@@ -23,16 +25,18 @@ public class English extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private static final int BARCODE_READER_REQUEST_CODE = 1;
 
-    private String enLabel = "EN.mp3";
+    private String enLabel = "_en";
 
     private TextView mResultTextView;
+    private VideoView videoView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_english);
-        mResultTextView = (TextView) findViewById(R.id.result_textview);
+
+        videoView = (VideoView)findViewById(R.id.myvideoview);
 
         Button scanBarcodeButton = (Button) findViewById(R.id.scan_barcode_button);
         scanBarcodeButton.setOnClickListener(new View.OnClickListener() {
@@ -63,11 +67,48 @@ public class English extends AppCompatActivity {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
                     Point[] p = barcode.cornerPoints;
 
-                    //Start media player
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_VIEW);
-                    intent.setDataAndType(Uri.parse(barcode.displayValue + enLabel), "audio/mp3");
-                    startActivity(intent);
+//                    //Start media player
+//                    Intent intent = new Intent();
+//                    intent.setAction(Intent.ACTION_VIEW);
+//                    intent.setDataAndType(Uri.parse(barcode.displayValue + enLabel), "audio/mp3");
+//                    startActivity(intent);
+
+                    //Start audio and switch background photos of VideoView
+
+                    MediaController mediaController = new MediaController(this);
+                    mediaController.setAnchorView(videoView);
+                    videoView.setMediaController(mediaController);
+                    // Add enLabel to path as english audio is e.g. first_song_en
+                    String path = "android.resource://" + getPackageName() + "/raw/" + barcode.displayValue + enLabel;
+
+                    switch(barcode.displayValue){
+                        case "first_song":
+                            videoView.setBackgroundResource(R.drawable.first_photo);
+                            break;
+                        case "second_song":
+                            videoView.setBackgroundResource(R.drawable.second_photo);
+                            break;
+                        case "third_song":
+                            videoView.setBackgroundResource(R.drawable.third_photo);
+                            break;
+                        case "fourth_song":
+                            videoView.setBackgroundResource(R.drawable.fourth_photo);
+                            break;
+                        case "fifth_song":
+                            videoView.setBackgroundResource(R.drawable.fifth_photo);
+                            break;
+                        case "sixth_song":
+                            videoView.setBackgroundResource(R.drawable.sixth_photo);
+                            break;
+                    }
+
+                    videoView.setVideoPath(path);
+                    videoView.start();
+
+
+
+
+
 
                 } else mResultTextView.setText("Capture code");
             } else Log.e(LOG_TAG, String.format(getString(R.string.barcode_error_format),

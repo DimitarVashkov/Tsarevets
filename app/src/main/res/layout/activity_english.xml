@@ -8,25 +8,27 @@
     tools:context="dimitarvashkov.tsarevets.English"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/result_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Find a Landmark code!"
+    <VideoView
+        android:id="@+id/myvideoview"
+        android:layout_width="match_parent"
+        android:layout_height="226dp"
+        android:layout_gravity="center"
+        android:layout_margin="40dp"
+        android:background="@drawable/two"
+        android:freezesText="true"
+        android:text="Намерете информационен код и го сканирайте!"
         android:textAlignment="center"
         android:textSize="22sp"
-        android:freezesText="true"
-        android:layout_gravity="center"
-        tools:layout_editor_absoluteY="0dp"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="8dp"
-        android:layout_margin="40dp"/>
+        tools:layout_editor_absoluteY="0dp" />
+
 
     <Button
         android:id="@+id/scan_barcode_button"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:text="@string/scan_barcode_button"
-        android:layout_below="@id/result_textview"
         android:background="@color/colorAccent"
         android:textColor="@color/colorPrimaryDark"
         tools:layout_editor_absoluteY="0dp"
