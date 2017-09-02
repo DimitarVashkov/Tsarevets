@@ -14,7 +14,7 @@
         android:layout_height="226dp"
         android:layout_gravity="center"
         android:layout_margin="40dp"
-        android:background="@drawable/two"
+        android:background="@drawable/scan_en"
         android:freezesText="true"
         android:text="Намерете информационен код и го сканирайте!"
         android:textAlignment="center"

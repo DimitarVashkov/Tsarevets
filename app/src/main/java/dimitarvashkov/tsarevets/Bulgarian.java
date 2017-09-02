@@ -19,11 +19,6 @@ public class Bulgarian extends AppCompatActivity {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private static final int BARCODE_READER_REQUEST_CODE = 1;
-    //CHANGE TO BG
-    //TODO Change to BG once you have the music
-    private String bgLabel = "DE.mp3";
-
-    private TextView mResultTextView;
     private VideoView videoView;
 
     @Override
@@ -32,8 +27,6 @@ public class Bulgarian extends AppCompatActivity {
         setContentView(R.layout.activity_bulgarian);
 
         videoView = (VideoView)findViewById(R.id.myvideoview);
-
-         //mResultTextView = (TextView) findViewById(R.id.result_textview);
 
 
         Button scanBarcodeButton = (Button) findViewById(R.id.scan_barcode_button);
@@ -64,16 +57,6 @@ public class Bulgarian extends AppCompatActivity {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
                     Point[] p = barcode.cornerPoints;
-
-//                    //mResultTextView.append("android.resource://"+getPackageName()+"/raw/" + barcode.displayValue);
-//                    Intent intent = new Intent();
-//                    intent.setAction(Intent.ACTION_VIEW);
-//                    //Uri.parse("android.resource://com.my.package/drawable/icon");
-//                    //Uri.parse(barcode.displayValue + bgLabel)
-//                    String location = "android.resource://"+getPackageName()+"/raw/";
-//                    intent.setDataAndType(Uri.parse(location + barcode.displayValue), "audio/mp3");
-//                    startActivity(intent);
-
 
                     //Start audio and switch background photos of VideoView
 
@@ -106,10 +89,7 @@ public class Bulgarian extends AppCompatActivity {
                     videoView.setVideoPath(path);
                     videoView.start();
 
-
-
-
-                } else mResultTextView.setText("Capture code");
+                } else videoView.setBackgroundResource(R.drawable.tsarevets);
             } else Log.e(LOG_TAG, String.format(getString(R.string.barcode_error_format),
                     CommonStatusCodes.getStatusCodeString(resultCode)));
         } else super.onActivityResult(requestCode, resultCode, data);

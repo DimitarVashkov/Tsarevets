@@ -28,10 +28,7 @@
             android:name=".Bulgarian"
             android:label="Царевец" />
         <activity android:name=".BarcodeCaptureActivity" />
-        <activity
-            android:name=".ScreenSliderPagerActivity"
-            android:label="@string/title_activity_screen_slider_pager"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
     </application>
 
 </manifest>

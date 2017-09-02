@@ -27,7 +27,6 @@ public class English extends AppCompatActivity {
 
     private String enLabel = "_en";
 
-    private TextView mResultTextView;
     private VideoView videoView;
 
 
@@ -67,18 +66,9 @@ public class English extends AppCompatActivity {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
                     Point[] p = barcode.cornerPoints;
 
-//                    //Start media player
-//                    Intent intent = new Intent();
-//                    intent.setAction(Intent.ACTION_VIEW);
-//                    intent.setDataAndType(Uri.parse(barcode.displayValue + enLabel), "audio/mp3");
-//                    startActivity(intent);
-
-                    //Start audio and switch background photos of VideoView
-
                     MediaController mediaController = new MediaController(this);
                     mediaController.setAnchorView(videoView);
                     videoView.setMediaController(mediaController);
-                    // Add enLabel to path as english audio is e.g. first_song_en
                     String path = "android.resource://" + getPackageName() + "/raw/" + barcode.displayValue + enLabel;
 
                     switch(barcode.displayValue){
@@ -106,11 +96,7 @@ public class English extends AppCompatActivity {
                     videoView.start();
 
 
-
-
-
-
-                } else mResultTextView.setText("Capture code");
+                } else videoView.setBackgroundResource(R.drawable.tsarevets);
             } else Log.e(LOG_TAG, String.format(getString(R.string.barcode_error_format),
                     CommonStatusCodes.getStatusCodeString(resultCode)));
         } else super.onActivityResult(requestCode, resultCode, data);
