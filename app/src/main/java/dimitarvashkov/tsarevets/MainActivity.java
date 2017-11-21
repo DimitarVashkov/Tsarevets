@@ -14,34 +14,32 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
-     ViewPager viewPager;
+    /*
+     Some improvement tips (with translations):
+     - You should use the strings.xml file to save strings. Later on it's the easiest thing
+       to translate your app to more than to languages. But you should use it from the beginning.
+       Also mention to choose english as standard language.
+     - You also should not implement the scanner and the media player two times. If there are
+       more translation in the future and you have to change something in the code you have to
+       change it everywhere. You should implement a single activity which plays the different
+       audiofiles based on the button clicked in the mainactivity. This will be also less
+       work to add translations.
+
+     In the poster at the museums you maybe have to hide the example qr-code a little bit. In
+     some cases the qr-code-scanner scans it (instead of the qr-code on the right side)
+     and the process fails.
+
+     I didn't change these things because I have not so much time but maybe in the future I can
+     help you more.
+
+     Best regards
+     Daniel Sous (Coala App)
+      */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-//        viewPager = (ViewPager) findViewById(R.id.view_pager);
-//        ImageAdapter adapter = new ImageAdapter(this);
-//        viewPager.setAdapter(adapter);
-//        viewPager.setOffscreenPageLimit(3);
-//
-//        Button next = (Button)findViewById(R.id.next);
-//        next.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                viewPager.setCurrentItem(getItem(+1), true); //getItem(-1) for previous
-//            }
-//        });
-//
-//        Button prev = (Button)findViewById(R.id.previous);
-//        prev.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                viewPager.setCurrentItem(getItem(-1), true); //getItem(-1) for previous
-//            }
-//        });
 
         LinearLayout English = (LinearLayout) findViewById(R.id.English);
         English.setClickable(true);
@@ -65,39 +63,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-//
-//
-//    //Function for buttons - prev and next
-//    private int getItem(int i) {
-//        return viewPager.getCurrentItem() + i;
-//
-//    }
-
 }

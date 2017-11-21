@@ -12,7 +12,7 @@
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
     <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_screen_slider_pager">ScreenSliderPagerActivity</string>
+    <!-- QR-CODE Strings -->
+    <string name="barcode_scanner_prompt">Scan a Qr-Code</string>
+    <string name="barcode_scanner_unknown_code">This is no museum code! Please scan a museum code to listen to a guide.</string>
 </resources>

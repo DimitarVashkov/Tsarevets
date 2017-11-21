@@ -27,7 +27,8 @@
         <activity
             android:name=".Bulgarian"
             android:label="Царевец" />
-        <activity android:name=".BarcodeCaptureActivity" />
+        <activity android:name=".ScanScanner"
+            android:screenOrientation="portrait"/>
 
     </application>
 
