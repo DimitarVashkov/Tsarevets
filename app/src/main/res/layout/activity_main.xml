@@ -78,13 +78,13 @@
             android:textSize="22dp"
             android:textColor="@color/colorPrimaryDark"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:id="@+id/English">
 
@@ -130,6 +130,15 @@
                 android:textSize="18dp"/>
         </LinearLayout>
 
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-9379137723459086/6122210986">
+        </com.google.android.gms.ads.AdView>
 
 
     </LinearLayout>
