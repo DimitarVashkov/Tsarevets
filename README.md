@@ -1,5 +1,5 @@
 # Tsarevets
-Audio guide app for Tsarevets
+Audio guide app for Tsarevets - Veliko Tarnovo, Bulgaria.
 
 
 
